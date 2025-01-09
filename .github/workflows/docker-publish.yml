@@ -83,7 +83,7 @@ jobs:
           tags: |
             ${{ steps.meta.outputs.tags }}
             ghcr.io/ummetcivi/ffsubsync-docker:latest
-            ghcr.io/ummetcivi/ffsubsync-docker:${env.VERSION}
+            ghcr.io/ummetcivi/ffsubsync-docker:${{env.VERSION}}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
