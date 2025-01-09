@@ -92,6 +92,8 @@ jobs:
           release_name: Release ${{ env.VERSION }}
           body: |
             Catch up with ffsubsync version: ${{ env.VERSION }}
+            
+            Docker Image: ghcr.io/ummetcivi/ffsubsync-docker:${{ env.VERSION }}
           draft: false
           prerelease: false
 #      # Sign the resulting Docker image digest except on PRs.
