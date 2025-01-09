@@ -32,13 +32,13 @@ jobs:
       id-token: write
 
     steps:
-      - name: Read version.txt
-        run: |
-          VER=$(cat ${{ github.workspace }}/version.txt)
-          echo "VERSION=$VER" >> $GITHUB_ENV
-
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Read version.txt
+        run: |
+          VER=$(cat version.txt)
+          echo "VERSION=$VER" >> $GITHUB_ENV
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
