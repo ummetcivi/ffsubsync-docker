@@ -89,7 +89,18 @@ jobs:
           cache-to: type=gha,mode=max
           build-args: |
             FFSUBSYNC_VERSION=${{ env.VERSION }}
-
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ env.VERSION }}
+          release_name: Release ${{ env.VERSION }}
+          body: |
+            Catch up with ffsubsync version: ${{ env.VERSION }}
+          draft: false
+          prerelease: false
 #      # Sign the resulting Docker image digest except on PRs.
 #      # This will only write to the public Rekor transparency log when the Docker
 #      # repository is public to avoid leaking data.  If you would like to publish
