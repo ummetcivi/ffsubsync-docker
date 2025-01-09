@@ -34,7 +34,7 @@ jobs:
     steps:
       - name: Read version.txt
         run: |
-          VER=$(cat version.txt)
+          VER=$(cat ${{ github.workspace }}/version.txt)
           echo "VERSION=$VER" >> $GITHUB_ENV
 
       - name: Checkout repository
