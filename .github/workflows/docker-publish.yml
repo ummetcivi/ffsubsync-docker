@@ -32,9 +32,9 @@ jobs:
       id-token: write
 
     steps:
-      - name: Read version.env
+      - name: Read version.txt
         run: |
-          VER=$(cat VERSION)
+          VER=$(cat version.txt)
           echo "VERSION=$VER" >> $GITHUB_ENV
 
       - name: Checkout repository
