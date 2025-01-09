@@ -33,9 +33,9 @@ jobs:
 
     steps:
       - name: Read version.env
-        uses: falti/dotenv-action@v1.1.4
-        with:
-          path: version.txt
+        run: |
+          VER=$(cat VERSION)
+          echo "VERSION=$VER" >> $GITHUB_ENV
 
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -83,12 +83,12 @@ jobs:
           tags: |
             ${{ steps.meta.outputs.tags }}
             ghcr.io/ummetcivi/ffsubsync-docker:latest
-            ghcr.io/ummetcivi/ffsubsync-docker:${env.FFSUBSYNC_VERSION}
+            ghcr.io/ummetcivi/ffsubsync-docker:${env.VERSION}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            FFSUBSYNC_VERSION=${env.FFSUBSYNC_VERSION}
+            FFSUBSYNC_VERSION=${env.VERSION}
 
 #      # Sign the resulting Docker image digest except on PRs.
 #      # This will only write to the public Rekor transparency log when the Docker
