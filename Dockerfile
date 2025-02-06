@@ -5,6 +5,6 @@ ARG FFSUBSYNC_VERSION
 RUN apt-get update && \
     apt-get install -y curl ffmpeg
 
-RUN pip install ffsubsync==$FFSUBSYNC_VERSION --break-system-packages
+RUN pip install setuptools ffsubsync==$FFSUBSYNC_VERSION --break-system-packages
 
 ENTRYPOINT ["ffs"]
